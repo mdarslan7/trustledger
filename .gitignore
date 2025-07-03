@@ -7,12 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Build and cache
 node_modules
 dist
 dist-ssr
+
+# Environment config
+.env
+.env.local
 *.local
 
-# Editor directories and files
+# Editor config
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Flow-specific
+emulator-account.pkey
+flow.json
+flow.accounts.json
