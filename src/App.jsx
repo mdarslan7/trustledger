@@ -1,5 +1,6 @@
 // import { useEffect } from "react"
 // import { verifyClaim } from "./lib/verifyClaim" 
+import ClaimVerifier from "./components/ClaimVerifier"
 
 function App() {
   // useEffect(() => {
@@ -14,7 +15,7 @@ function App() {
   // }, [])
   return (
     <>
-      <div>Hello World</div>
+      <ClaimVerifier></ClaimVerifier>
     </>
   )
 }
