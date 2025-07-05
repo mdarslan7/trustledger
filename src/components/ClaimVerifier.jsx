@@ -81,7 +81,7 @@ export default function ClaimVerifier() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
-            Claim Verifier
+            TrustLedger
           </h1>
           <p className="text-slate-600">
             Verify the accuracy of claims using reliable sources

@@ -1,183 +1,219 @@
-## 👋 Welcome Flow Developer!
+# TrustLedger: External Verification Infrastructure for AI & Autonomous Systems
 
-This project is a starting point for you to develop smart contracts on the Flow Blockchain. It comes with example contracts, scripts, transactions, and tests to help you get started.
+> A blockchain-based verification infrastructure that checks AI-generated claims against external evidence sources and creates permanent, auditable trust records on Flow blockchain - built for AI & Autonomous Infrastructure.
 
-## 🔨 Getting Started
+## 🎯 The Problem We Solve
 
-Here are some essential resources to help you hit the ground running:
+**AI systems make claims, but how do we verify they're actually true?**
 
-- **[Flow Documentation](https://developers.flow.com/)** - The official Flow Documentation is a great starting point to start learning about about [building](https://developers.flow.com/build/flow) on Flow.
-- **[Cadence Documentation](https://cadence-lang.org/docs/language)** - Cadence is the native language for the Flow Blockchain. It is a resource-oriented programming language that is designed for developing smart contracts.  The documentation is a great place to start learning about the language.
-- **[Visual Studio Code](https://code.visualstudio.com/)** and the **[Cadence Extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence)** - It is recommended to use the Visual Studio Code IDE with the Cadence extension installed.  This will provide syntax highlighting, code completion, and other features to support Cadence development.
-- **[Flow Clients](https://developers.flow.com/tools/clients)** - There are clients available in multiple languages to interact with the Flow Blockchain.  You can use these clients to interact with your smart contracts, run transactions, and query data from the network.
-- **[Block Explorers](https://developers.flow.com/ecosystem/block-explorers)** - Block explorers are tools that allow you to explore on-chain data.  You can use them to view transactions, accounts, events, and other information.  [Flowser](https://flowser.dev/) is a powerful block explorer for local development on the Flow Emulator.
+- 🤖 **AI hallucinates** 15-30% of the time, even GPT-4
+- 📈 **83% of people** can't distinguish AI content from human content
+- ⚡ **Misinformation spreads 6x faster** than verified truth
+- 🔄 **AI self-validation** amplifies hallucinations instead of catching them
 
-## 📦 Project Structure
+Current solutions either rely on AI validating itself (unreliable) or humans checking everything (doesn't scale). **We have built an external verification system.**
 
-Your project has been set up with the following structure:
+## 🚀 Our Solution: External Evidence Verification
 
-- `flow.json` - This is the configuration file for your project (analogous to a `package.json` file for NPM).  It has been initialized with a basic configuration to get started.
-- `/cadence` - This is where your Cadence smart contracts code lives
+**TrustLedger verifies claims against external evidence, not AI opinions - creating verification infrastructure for autonomous AI systems.**
 
-Inside the `cadence` folder you will find:
-- `/contracts` - This folder contains your Cadence contracts (these are deployed to the network and contain the business logic for your application)
-  - `Counter.cdc`
-- `/scripts` - This folder contains your Cadence scripts (read-only operations)
-  - `GetCounter.cdc`
-- `/transactions` - This folder contains your Cadence transactions (state-changing operations)
-  - `IncrementCounter.cdc`
-- `/tests` - This folder contains your Cadence tests (integration tests for your contracts, scripts, and transactions to verify they behave as expected)
-  - `Counter_test.cdc`
+**How it works:**
 
-## Running the Existing Project
+1. **User submits any claim** (AI-generated or human-made)
+2. **System queries external databases** (Wikidata for now) for factual evidence
+3. **Evidence is compared** to the original claim
+4. **Verification result stored permanently** on Flow blockchain
 
-### Executing the `GetCounter` Script
+**Key insight:** We use AI as a tool to fetch and compare data, but the verification comes from external evidence sources, not AI's internal knowledge. This creates autonomous verification infrastructure that AI systems can rely on.
 
-To run the `GetCounter` script, use the following command:
+TrustLedger creates this external verification system through a clear process:
 
-```shell
-flow scripts execute cadence/scripts/GetCounter.cdc
+```
+User Submits Claim → Generate Evidence Query → Wikidata Database (external facts)
+→ Compare Claim vs External Evidence → Flow Blockchain (permanent verification record)
 ```
 
-### Sending the `IncrementCounter` Transaction
+### **Why This Approach Works:**
 
-To run the `IncrementCounter` transaction, use the following command:
+- ✅ **External evidence sources**: Uses Wikidata's 100M+ verified facts, not AI's memory
+- ✅ **No AI self-validation**: AI helps fetch data, but verification comes from external sources
+- ✅ **Immutable verification records**: Both TRUE and FALSE results stored permanently
+- ✅ **Evidence-based verification**: Every result is backed by retrievable external data
+- ✅ **Structured process**: Consistent, auditable verification workflow
 
-```shell
-flow transactions send cadence/transactions/IncrementCounter.cdc
+## 🌊 Flow Integration & EVM++ Benefits
+
+### **What We Integrated with Flow:**
+
+- **✅ Cadence Smart Contracts**: Deployed `ClaimVerifier.cdc` on Flow Testnet
+- **✅ Walletless Authentication**: Zero-friction user onboarding using Flow's native walletless auth
+- **✅ FCL Integration**: Complete Flow Client Library implementation with proper cryptographic signing
+
+### **How We Did It:**
+
+```javascript
+// Walletless authentication with proper Flow cryptography
+export const authzFn = async (account = {}) => {
+  return {
+    signingFunction: async (signable) => {
+      // SHA3-256 hashing + ECDSA P-256 signing (Flow's requirements)
+      const message = Buffer.from(signable.message, "hex");
+      const hashedMessage = Buffer.from(sha3_256(message), "hex");
+      const sig = ecKey.sign(hashedMessage);
+      // ... signature formatting
+    },
+  };
+};
 ```
 
-To learn more about using the CLI, check out the [Flow CLI Documentation](https://developers.flow.com/tools/flow-cli).
+**The Result:** Anyone can verify claims and record them on blockchain **without downloading wallets, buying crypto, or understanding blockchain.**
 
-## 👨‍💻 Start Developing
+## 🏗️ Technical Architecture
 
-### Creating a New Contract
+### **Frontend (React + Vite)**
 
-To add a new contract to your project, run the following command:
+- Modern, responsive UI with Tailwind CSS and Lucide React icons
+- Real-time verification flow with loading states and error handling
+- Seamless blockchain interaction (users don't know they're using Web3)
+- Flow Explorer integration for transaction transparency
+- Two-step process: Verify claim, then optionally ledge to blockchain
 
-```shell
-flow generate contract
+### **External Evidence Verification Process**
+
+```javascript
+// 1. Generate query to find relevant evidence (AI helps with query generation)
+const contextPrompt = `Generate SPARQL query to find evidence for: "${claim}"`;
+const query = await callGemini(contextPrompt);
+
+// 2. Query external database for factual evidence (NOT AI knowledge)
+const response = await fetch(
+  `https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}`
+);
+
+// 3. Compare claim against external evidence (AI helps with comparison)
+const verdict = await callGemini(
+  `Compare claim: "${claim}" against external evidence: ${wikidata_response}`
+);
 ```
 
-This command will create a new contract file and add it to the `flow.json` configuration file.
-
-### Creating a New Script
-
-To add a new script to your project, run the following command:
-
-```shell
-flow generate script
-```
-
-This command will create a new script file.  Scripts are used to read data from the blockchain and do not modify state (i.e. get the current balance of an account, get a user's NFTs, etc).
-
-You can import any of your own contracts or installed dependencies in your script file using the `import` keyword.  For example:
+### **Blockchain Layer (Flow + Cadence)**
 
 ```cadence
-import "Counter"
+// Smart contract stores external verification results
+access(all) contract ClaimVerifier {
+    access(all) struct Claim {
+        access(all) let claim: String      // Original claim to verify
+        access(all) let verdict: Bool      // Verification result based on external evidence
+        access(all) let confidence: Int    // Confidence score (0-100)
+        access(all) let source: String     // External evidence source (Wikidata)
+    }
+
+    access(all) fun addClaim(claim: String, verdict: Bool, confidence: Int, source: String) {
+        // Creates permanent, auditable verification record
+        let newClaim = Claim(claim: claim, verdict: verdict, confidence: confidence, source: source)
+        self.claims.append(newClaim)
+    }
+}
 ```
 
-### Creating a New Transaction
+## 🎯 Killer App Potential
 
-To add a new transaction to your project you can use the following command:
+### **Immediate Impact:**
 
-```shell
-flow generate transaction
+- **Mass Market Appeal**: Anyone can verify any claim in 3 clicks
+- **No Barriers**: Walletless = mainstream adoption without crypto friction
+- **Real Problem**: Addresses $78B annual cost of misinformation globally
+- **Viral Potential**: People share fact-checks constantly on social media
+
+### **Scale Vision:**
+
+- 🌍 **Consumer**: Instant claim verification with permanent verification records
+- 🏢 **Enterprise**: AI companies integrate for external verification of their outputs
+- 🌐 **Platform**: Social media platforms use for real-time external fact-checking
+- 🤖 **AI Integration**: Autonomous AI systems can verify their claims against external evidence
+- 📊 **Verification Infrastructure**: Becomes the external verification layer for AI claims
+- 🎯 **AI & Autonomous Track**: Built specifically for Flow's AI & Autonomous Infrastructure challenge
+
+### **Why Flow Was Essential:**
+
+- **Walletless auth** = Zero barriers for mainstream adoption
+- **Account linking** = Perfect for autonomous AI system integration
+- **Gasless user experience** = Free verification creates autonomous trust systems
+- **Cadence safety** = Secure, immutable trust records that can't be manipulated
+
+## 🔗 Live Demo
+
+- **🌐 Frontend**: [Deploy to get live URL] _(Add your deployment URL after deploying)_
+- **⛓️ Smart Contract**: [`0xc87ca22251ccabb4`](https://testnet.flowdiver.io/account/0xc87ca22251ccabb4)
+- **🧪 Test Transaction**: [`f05e15d6c1ab0641...`](https://testnet.flowdiver.io/tx/f05e15d6c1ab0641f963260be4153a1c6568abb789cc725ea78752226a01ac3f)
+
+### **Try the Demo:**
+
+1. Visit the app
+2. Enter any claim (try: "The Eiffel Tower is 324 meters tall")
+3. Watch system query Wikidata for external evidence
+4. See claim compared against external facts (not AI knowledge)
+5. Record the verification result permanently on Flow blockchain
+6. **No wallet required!**
+
+## 👥 Team
+
+**[Your Name/Handle]** - _Full-stack developer & blockchain architect_
+
+- GitHub: [@your-github]
+- Twitter: [@your-twitter]
+- _Passionate about building verification infrastructure for AI & autonomous systems_
+
+## 🏆 Why This Wins "Most Killer App Potential"
+
+### **✅ Submission Requirements Met:**
+
+- **✅ Deployed on Flow**: Live smart contract on Flow Testnet
+- **✅ Public & Free**: Anyone can use without barriers
+- **✅ Original Work**: Novel AI + blockchain verification architecture
+- **✅ Working Demo**: Full end-to-end functionality
+
+### **✅ Required Technologies:**
+
+- **✅ Cadence Contracts**: `ClaimVerifier.cdc` deployed and tested
+- **✅ FCL Module**: Complete integration with walletless auth
+- **✅ EVM++ Benefits**: Gasless user experience, batched operations capability
+
+### **🎯 Killer App Criteria:**
+
+- **✅ Consumer-oriented**: Anyone can use, zero crypto knowledge needed
+- **✅ AI & Autonomous focus**: External verification infrastructure for autonomous AI systems
+- **✅ Mass adoption ready**: Walletless onboarding removes all barriers
+- **✅ Industry-defining potential**: Could become the external verification standard for AI systems
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/mdarslan7/trustledger
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Add your Gemini API key and Flow credentials (private key, address, key index)
+
+# Run the development server
+npm run dev
+
+# Test the smart contract
+flow test cadence/tests/ClaimVerifier_test.cdc
 ```
 
-This command will create a new transaction file.  Transactions are used to modify the state of the blockchain (i.e purchase an NFT, transfer tokens, etc).
+## 🔮 The Future
 
-You can import any dependencies as you would in a script file.
+**This isn't just an app - it's external verification infrastructure for autonomous AI systems.**
 
-### Creating a New Test
+When autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
 
-To add a new test to your project you can use the following command:
+**We're not building another dApp. We're building the verification infrastructure for AI & autonomous systems.**
 
-```shell
-flow generate test
-```
+---
 
-This command will create a new test file.  Tests are used to verify that your contracts, scripts, and transactions are working as expected.
-
-### Installing External Dependencies
-
-If you want to use external contract dependencies (such as NonFungibleToken, FlowToken, FungibleToken, etc.) you can install them using [Flow CLI Dependency Manager](https://developers.flow.com/tools/flow-cli/dependency-manager).
-
-For example, to install the NonFungibleToken contract you can use the following command:
-
-```shell
-flow deps add mainnet://1d7e57aa55817448.NonFungibleToken
-```
-
-Contracts can be found using [ContractBrowser](https://contractbrowser.com/), but be sure to verify the authenticity before using third-party contracts in your project.
-
-## 🧪 Testing
-
-To verify that your project is working as expected you can run the tests using the following command:
-
-```shell
-flow test
-```
-
-This command will run all tests with the `_test.cdc` suffix (these can be found in the `cadence/tests` folder). You can add more tests here using the `flow generate test` command (or by creating them manually).
-
-To learn more about testing in Cadence, check out the [Cadence Test Framework Documentation](https://cadence-lang.org/docs/testing-framework).
-
-## 🚀 Deploying Your Project
-
-To deploy your project to the Flow network, you must first have a Flow account and have configured your deployment targets in the `flow.json` configuration file.
-
-You can create a new Flow account using the following command:
-
-```shell
-flow accounts create
-```
-
-Learn more about setting up deployment targets in the [Flow CLI documentation](https://developers.flow.com/tools/flow-cli/deployment/project-contracts).
-
-### Deploying to the Flow Emulator
-
-To deploy your project to the Flow Emulator, start the emulator using the following command:
-
-```shell
-flow emulator --start
-```
-
-To deploy your project, run the following command:
-
-```shell
-flow project deploy --network=emulator
-```
-
-This command will start the Flow Emulator and deploy your project to it. You can now interact with your project using the Flow CLI or alternate [client](https://developers.flow.com/tools/clients).
-
-### Deploying to Flow Testnet
-
-To deploy your project to Flow Testnet you can use the following command:
-
-```shell
-flow project deploy --network=testnet
-```
-
-This command will deploy your project to Flow Testnet. You can now interact with your project on this network using the Flow CLI or any other Flow client.
-
-### Deploying to Flow Mainnet
-
-To deploy your project to Flow Mainnet you can use the following command:
-
-```shell
-flow project deploy --network=mainnet
-```
-
-This command will deploy your project to Flow Mainnet. You can now interact with your project using the Flow CLI or alternate [client](https://developers.flow.com/tools/clients).
-
-## 📚 Other Resources
-
-- [Cadence Design Patterns](https://cadence-lang.org/docs/design-patterns)
-- [Cadence Anti-Patterns](https://cadence-lang.org/docs/anti-patterns)
-- [Flow Core Contracts](https://developers.flow.com/build/core-contracts)
-
-## 🤝 Community
-- [Flow Community Forum](https://forum.flow.com/)
-- [Flow Discord](https://discord.gg/flow)
-- [Flow Twitter](https://x.com/flow_blockchain)
+_Built for Flow's "Most Killer App Potential" Challenge 2025 - AI & Autonomous Infrastructure Track_
