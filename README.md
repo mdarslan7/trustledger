@@ -1,6 +1,6 @@
 # TrustLedger: External Verification Infrastructure for AI & Autonomous Systems
 
-> A blockchain-based verification infrastructure that checks AI-generated claims against external evidence sources and creates permanent, auditable trust records on Flow blockchain, built for AI & Autonomous Infrastructure.
+> TrustLedger is a Flow-based platform that verifies AI-generated claims using external evidence and stores the results permanently on the blockchain.
 
 ## 🎯 The Problem We Solve
 
@@ -196,7 +196,8 @@ We want that when autonomous AI systems make claims, TrustLedger provides extern
 
 ---
 
-## Developed By
-Md Arslan [`LinkedIn`](https://www.linkedin.com/in/mdarslan7/) [`X`](https://www.x.com/md_arslan7)
+## Team
+- **Md Arslan** – Full-stack Developer  
+[`LinkedIn`](https://www.linkedin.com/in/mdarslan7/) [`X`](https://www.x.com/md_arslan7)
 
 _Built for PL_Genesis: Modular Worlds Hackathon - AI & Autonomous Infrastructure Track_
