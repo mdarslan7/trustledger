@@ -216,4 +216,4 @@ When autonomous AI systems make claims, TrustLedger provides external verificati
 
 ---
 
-_Built for Flow's "Most Killer App Potential" Challenge 2025 - AI & Autonomous Infrastructure Track_
+_Built for PL_Genesis: Modular Worlds Hackathon - AI & Autonomous Infrastructure Track_
