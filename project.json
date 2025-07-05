@@ -1,7 +1,7 @@
 {
   "name": "TrustLedger",
-  "tagline": "TrustLedger is a Flow-based platform that verifies AI-generated claims using external evidence and stores the results immutably on-chain.",
-  "description": "TrustLedger is a decentralized verification infrastructure that validates AI-generated claims using external evidence sources like Wikidata and stores the results permanently on the Flow blockchain. It is designed to build trust in autonomous AI systems by ensuring their outputs are verified against real-world factual data instead of being blindly accepted. When a user or AI agent submits a claim (such as 'Tokyo is the capital of Japan'), TrustLedger uses Google Gemini to generate a SPARQL query, retrieves facts from Wikidata, compares them with the claim, determines a verdict (true or false), assigns a confidence score, and records this structured result on-chain using Cadence smart contracts. The platform integrates Flow’s walletless authentication, allowing anyone to submit or verify claims without needing a wallet or cryptocurrency. The frontend uses React, Vite, and Tailwind CSS, while the backend uses REST APIs to connect the Gemini API, Wikidata, and Flow RPC. Unlike traditional fact-checking systems that rely on human moderation or AI self-validation, TrustLedger provides a scalable, autonomous, and immutable solution for verifying AI claims using real data and public blockchain infrastructure.",
+  "tagline": "Flow-powered AI claim verification with on-chain proof.",
+  "description": "TrustLedger verifies claims, primarily AI-generated, by querying factual data from Wikidata via Gemini and stores results immutably on Flow using Cadence, FCL, and wallet-less authentication. On-chain records ensure transparent, permanent, and auditable verification.",
   "team": [
     {
       "name": "Md Arslan",
