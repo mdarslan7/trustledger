@@ -68,9 +68,16 @@ export const authzFn = async (account = {}) => {
 
 **The Result:** Anyone can verify claims and record them on blockchain **without downloading wallets, buying crypto, or understanding blockchain.**
 
-## 🏗️ Technical Architecture
+## 🏗️ Technical Architecture & Tech Stack
 
-### **Frontend (React + Vite)**
+### **AI Integration Layer (Google Gemini)**
+
+- **🤖 Intelligent SPARQL Query Generation**: Gemini analyzes claims and generates precise Wikidata queries
+- **🧠 Evidence-Based Comparison**: AI compares claims against external facts (not internal knowledge)
+- **📊 Confidence Scoring**: Smart assessment of verification reliability
+- **🔍 Natural Language Processing**: Converts human claims into structured database queries
+
+### **Frontend Stack (React + Vite)**
 
 - Modern, responsive UI with Tailwind CSS and Lucide React icons
 - Real-time verification flow with loading states and error handling
@@ -78,43 +85,64 @@ export const authzFn = async (account = {}) => {
 - Flow Explorer integration for transaction transparency
 - Two-step process: Verify claim, then optionally ledge to blockchain
 
-### **External Evidence Verification Process**
+### **Backend & External APIs**
+
+- **Wikidata SPARQL Endpoint**: 100M+ verified facts database
+- **Google Gemini API**: AI-powered query generation and evidence comparison
+- **Flow RPC API**: Blockchain transaction processing
+- **RESTful API Design**: Clean separation between verification and ledging
+
+### **External Evidence Verification Process (AI-Powered)**
 
 ```javascript
-// 1. Generate query to find relevant evidence (AI helps with query generation)
+// 1. AI-powered query generation for external evidence discovery
 const contextPrompt = `Generate SPARQL query to find evidence for: "${claim}"`;
-const query = await callGemini(contextPrompt);
+const query = await callGemini(contextPrompt); // Gemini creates precise Wikidata queries
 
-// 2. Query external database for factual evidence (NOT AI knowledge)
+// 2. Query external database for factual evidence (NOT AI's internal knowledge)
 const response = await fetch(
   `https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}`
 );
 
-// 3. Compare claim against external evidence (AI helps with comparison)
-const verdict = await callGemini(
-  `Compare claim: "${claim}" against external evidence: ${wikidata_response}`
-);
+// 3. AI-powered evidence comparison against external facts
+const comparisonPrompt = `Compare claim: "${claim}" against external evidence: ${wikidata_response}. 
+Provide verdict (true/false) and confidence score (0-100).`;
+const verdict = await callGemini(comparisonPrompt); // Gemini analyzes evidence, not opinions
 ```
 
 ### **Blockchain Layer (Flow + Cadence)**
 
 ```cadence
-// Smart contract stores external verification results
+// Smart contract stores AI-verified external evidence results
 access(all) contract ClaimVerifier {
     access(all) struct Claim {
         access(all) let claim: String      // Original claim to verify
-        access(all) let verdict: Bool      // Verification result based on external evidence
-        access(all) let confidence: Int    // Confidence score (0-100)
+        access(all) let verdict: Bool      // AI-verified result based on external evidence
+        access(all) let confidence: Int    // AI confidence score (0-100)
         access(all) let source: String     // External evidence source (Wikidata)
+        access(all) let evidence: String   // Raw external evidence data
     }
 
-    access(all) fun addClaim(claim: String, verdict: Bool, confidence: Int, source: String) {
-        // Creates permanent, auditable verification record
-        let newClaim = Claim(claim: claim, verdict: verdict, confidence: confidence, source: source)
+    access(all) fun addClaim(claim: String, verdict: Bool, confidence: Int, source: String, evidence: String) {
+        // Creates permanent, auditable verification record with AI analysis
+        let newClaim = Claim(
+            claim: claim,
+            verdict: verdict,
+            confidence: confidence,
+            source: source,
+            evidence: evidence
+        )
         self.claims.append(newClaim)
     }
 }
 ```
+
+### **Cryptographic & Security Layer**
+
+- **SHA3-256 Hashing**: Flow-compliant cryptographic standards
+- **ECDSA P-256 Signing**: Secure transaction authentication
+- **Walletless Authentication**: Flow's native account linking
+- **Immutable Records**: Blockchain-secured verification trails
 
 ### **Why Flow Was Essential:**
 
@@ -125,7 +153,7 @@ access(all) contract ClaimVerifier {
 
 ## 🔗 Live Demo
 
-- **🌐 Frontend**: [Demo URL] _(https://trustledger.vercel.app/)
+- **🌐 Frontend**: [Demo URL] \_(https://trustledger.vercel.app/)
 - **⛓️ Smart Contract**: [`0xc87ca22251ccabb4`](https://testnet.flowdiver.io/account/0xc87ca22251ccabb4)
 - **🧪 Test Transaction**: [`f05e15d6c1ab0641...`](https://testnet.flowdiver.io/tx/f05e15d6c1ab0641f963260be4153a1c6568abb789cc725ea78752226a01ac3f)
 
