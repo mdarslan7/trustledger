@@ -1,6 +1,6 @@
 # TrustLedger: External Verification Infrastructure for AI & Autonomous Systems
 
-> A blockchain-based verification infrastructure that checks AI-generated claims against external evidence sources and creates permanent, auditable trust records on Flow blockchain, built for AI & Autonomous Infrastructure.
+> TrustLedger is a Flow-based platform that verifies AI-generated claims using external evidence and stores the results permanently on the blockchain.
 
 ## 🎯 The Problem We Solve
 
@@ -68,14 +68,14 @@ export const authzFn = async (account = {}) => {
 
 **The Result:** Anyone can verify claims and record them on blockchain **without downloading wallets, buying crypto, or understanding blockchain.**
 
-## 🏗️ Technical Architecture & Tech Stack
+## Technical Architecture & Tech Stack
 
 ### **AI Integration Layer (Google Gemini)**
 
-- **🤖 Intelligent SPARQL Query Generation**: Gemini analyzes claims and generates precise Wikidata queries
-- **🧠 Evidence-Based Comparison**: AI compares claims against external facts (not internal knowledge)
-- **📊 Confidence Scoring**: Smart assessment of verification reliability
-- **🔍 Natural Language Processing**: Converts human claims into structured database queries
+- **Intelligent SPARQL Query Generation**: Gemini analyzes claims and generates precise Wikidata queries
+- **Evidence-Based Comparison**: AI compares claims against external facts (not internal knowledge)
+- **Confidence Scoring**: Smart assessment of verification reliability
+- **Natural Language Processing**: Converts human claims into structured database queries
 
 ### **Frontend Stack (React + Vite)**
 
@@ -153,8 +153,8 @@ access(all) contract ClaimVerifier {
 
 ## 🔗 Live Demo
 
-- **🌐 Frontend**: [Demo URL] \_(https://trustledger.vercel.app/)
-- **⛓️ Smart Contract**: [`0xc87ca22251ccabb4`](https://testnet.flowdiver.io/account/0xc87ca22251ccabb4)
+- **🌐 Frontend**: [`Demo URL`](https://trustledger.vercel.app/)
+- **⛓️ Smart Contract**: [`0xc87ca22251ccabb4`](https://testnet.flowscan.io/contract/A.c87ca22251ccabb4.ClaimVerifier)
 - **🧪 Test Transaction**: [`f05e15d6c1ab0641...`](https://testnet.flowdiver.io/tx/f05e15d6c1ab0641f963260be4153a1c6568abb789cc725ea78752226a01ac3f)
 
 ### **Try the Demo:**
@@ -186,13 +186,19 @@ npm run dev
 flow test cadence/tests/ClaimVerifier_test.cdc
 ```
 
-## 🔮 The Future
+## The Future
 
 **This isn't just an app. It's external verification infrastructure for autonomous AI systems.**
 
 We want that when autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
 
 **We're not building another dApp. We're building the verification infrastructure for AI & autonomous systems.**
+
+---
+
+## Team
+- **Md Arslan** – Full-stack Developer  
+[`LinkedIn`](https://www.linkedin.com/in/mdarslan7/) [`X`](https://www.x.com/md_arslan7)
 
 ---
 
