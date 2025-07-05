@@ -146,10 +146,9 @@ access(all) contract ClaimVerifier {
 
 ### **Why Flow Was Essential:**
 
-- **Walletless auth** = Zero barriers for mainstream adoption
-- **Account linking** = Perfect for autonomous AI system integration
-- **Gasless user experience** = Free verification creates autonomous trust systems
-- **Cadence safety** = Secure, immutable trust records that can't be manipulated
+- **Walletless auth** -> Zero barriers for mainstream adoption
+- **Account linking** -> Perfect for autonomous AI system integration
+- **Cadence safety** -> Secure, immutable trust records that can't be manipulated
 
 ## 🔗 Live Demo
 
