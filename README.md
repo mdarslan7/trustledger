@@ -200,4 +200,6 @@ We want that when autonomous AI systems make claims, TrustLedger provides extern
 - **Md Arslan** – Full-stack Developer  
 [`LinkedIn`](https://www.linkedin.com/in/mdarslan7/) [`X`](https://www.x.com/md_arslan7)
 
+---
+
 _Built for PL_Genesis: Modular Worlds Hackathon - AI & Autonomous Infrastructure Track_
