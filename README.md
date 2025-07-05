@@ -2,7 +2,7 @@
 
 > TrustLedger is a Flow-based platform that verifies AI-generated claims using external evidence and stores the results permanently on the blockchain.
 
-## 🎯 The Problem We Solve
+## 🎯 The Problem 
 
 **AI systems make claims, but how do we verify they're actually true?**
 
@@ -13,7 +13,7 @@
 
 Current solutions either rely on AI validating itself (unreliable) or humans checking everything (doesn't scale). **We have built an external verification system.**
 
-## 🚀 Our Solution: External Evidence Verification
+## 🚀 Solution: External Evidence Verification
 
 **TrustLedger verifies claims against external evidence, not AI opinions - creating verification infrastructure for autonomous AI systems.**
 
@@ -43,13 +43,11 @@ User Submits Claim → Generate Evidence Query → Wikidata Database (external f
 
 ## Flow Integration & Benefits
 
-### **What We Integrated with Flow:**
-
 - **✅ Cadence Smart Contracts**: Deployed `ClaimVerifier.cdc` on Flow Testnet
 - **✅ Walletless Authentication**: Zero-friction user onboarding using Flow's native walletless auth
 - **✅ FCL Integration**: Complete Flow Client Library implementation with proper cryptographic signing
 
-### **How We Did It:**
+### **Implementation:**
 
 ```javascript
 // Walletless authentication with proper Flow cryptography
@@ -189,7 +187,7 @@ flow test cadence/tests/ClaimVerifier_test.cdc
 
 **This isn't just an app. It's external verification infrastructure for autonomous AI systems.**
 
-We want that when autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
+The goal is that when autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
 
 **We're not building another dApp. We're building the verification infrastructure for AI & autonomous systems.**
 
