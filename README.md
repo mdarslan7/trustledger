@@ -1,15 +1,15 @@
 # TrustLedger: External Verification Infrastructure for AI & Autonomous Systems
 
-> A blockchain-based verification infrastructure that checks AI-generated claims against external evidence sources and creates permanent, auditable trust records on Flow blockchain - built for AI & Autonomous Infrastructure.
+> A blockchain-based verification infrastructure that checks AI-generated claims against external evidence sources and creates permanent, auditable trust records on Flow blockchain, built for AI & Autonomous Infrastructure.
 
 ## 🎯 The Problem We Solve
 
 **AI systems make claims, but how do we verify they're actually true?**
 
-- 🤖 **AI hallucinates** 15-30% of the time, even GPT-4
-- 📈 **83% of people** can't distinguish AI content from human content
-- ⚡ **Misinformation spreads 6x faster** than verified truth
-- 🔄 **AI self-validation** amplifies hallucinations instead of catching them
+- **AI hallucinates** 15-30% of the time, even GPT-4
+- **83% of people** can't distinguish AI content from human content
+- **Misinformation spreads 6x faster** than verified truth
+- **AI self-validation** amplifies hallucinations instead of catching them
 
 Current solutions either rely on AI validating itself (unreliable) or humans checking everything (doesn't scale). **We have built an external verification system.**
 
@@ -41,7 +41,7 @@ User Submits Claim → Generate Evidence Query → Wikidata Database (external f
 - ✅ **Evidence-based verification**: Every result is backed by retrievable external data
 - ✅ **Structured process**: Consistent, auditable verification workflow
 
-## 🌊 Flow Integration & EVM++ Benefits
+## Flow Integration & Benefits
 
 ### **What We Integrated with Flow:**
 
@@ -116,24 +116,6 @@ access(all) contract ClaimVerifier {
 }
 ```
 
-## 🎯 Killer App Potential
-
-### **Immediate Impact:**
-
-- **Mass Market Appeal**: Anyone can verify any claim in 3 clicks
-- **No Barriers**: Walletless = mainstream adoption without crypto friction
-- **Real Problem**: Addresses $78B annual cost of misinformation globally
-- **Viral Potential**: People share fact-checks constantly on social media
-
-### **Scale Vision:**
-
-- 🌍 **Consumer**: Instant claim verification with permanent verification records
-- 🏢 **Enterprise**: AI companies integrate for external verification of their outputs
-- 🌐 **Platform**: Social media platforms use for real-time external fact-checking
-- 🤖 **AI Integration**: Autonomous AI systems can verify their claims against external evidence
-- 📊 **Verification Infrastructure**: Becomes the external verification layer for AI claims
-- 🎯 **AI & Autonomous Track**: Built specifically for Flow's AI & Autonomous Infrastructure challenge
-
 ### **Why Flow Was Essential:**
 
 - **Walletless auth** = Zero barriers for mainstream adoption
@@ -143,48 +125,18 @@ access(all) contract ClaimVerifier {
 
 ## 🔗 Live Demo
 
-- **🌐 Frontend**: [Deploy to get live URL] _(Add your deployment URL after deploying)_
+- **🌐 Frontend**: [Demo URL] _(https://trustledger.vercel.app/)
 - **⛓️ Smart Contract**: [`0xc87ca22251ccabb4`](https://testnet.flowdiver.io/account/0xc87ca22251ccabb4)
 - **🧪 Test Transaction**: [`f05e15d6c1ab0641...`](https://testnet.flowdiver.io/tx/f05e15d6c1ab0641f963260be4153a1c6568abb789cc725ea78752226a01ac3f)
 
 ### **Try the Demo:**
 
 1. Visit the app
-2. Enter any claim (try: "The Eiffel Tower is 324 meters tall")
+2. Enter any claim (try: "Tokyo is the capital of Japan")
 3. Watch system query Wikidata for external evidence
 4. See claim compared against external facts (not AI knowledge)
 5. Record the verification result permanently on Flow blockchain
 6. **No wallet required!**
-
-## 👥 Team
-
-**[Your Name/Handle]** - _Full-stack developer & blockchain architect_
-
-- GitHub: [@your-github]
-- Twitter: [@your-twitter]
-- _Passionate about building verification infrastructure for AI & autonomous systems_
-
-## 🏆 Why This Wins "Most Killer App Potential"
-
-### **✅ Submission Requirements Met:**
-
-- **✅ Deployed on Flow**: Live smart contract on Flow Testnet
-- **✅ Public & Free**: Anyone can use without barriers
-- **✅ Original Work**: Novel AI + blockchain verification architecture
-- **✅ Working Demo**: Full end-to-end functionality
-
-### **✅ Required Technologies:**
-
-- **✅ Cadence Contracts**: `ClaimVerifier.cdc` deployed and tested
-- **✅ FCL Module**: Complete integration with walletless auth
-- **✅ EVM++ Benefits**: Gasless user experience, batched operations capability
-
-### **🎯 Killer App Criteria:**
-
-- **✅ Consumer-oriented**: Anyone can use, zero crypto knowledge needed
-- **✅ AI & Autonomous focus**: External verification infrastructure for autonomous AI systems
-- **✅ Mass adoption ready**: Walletless onboarding removes all barriers
-- **✅ Industry-defining potential**: Could become the external verification standard for AI systems
 
 ## 🚀 Getting Started
 
@@ -208,9 +160,9 @@ flow test cadence/tests/ClaimVerifier_test.cdc
 
 ## 🔮 The Future
 
-**This isn't just an app - it's external verification infrastructure for autonomous AI systems.**
+**This isn't just an app. It's external verification infrastructure for autonomous AI systems.**
 
-When autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
+We want that when autonomous AI systems make claims, TrustLedger provides external verification against factual databases. When AI-generated content needs validation, TrustLedger creates auditable verification trails using external evidence. When autonomous AI systems need accountability, TrustLedger ensures every claim can be traced back to external sources.
 
 **We're not building another dApp. We're building the verification infrastructure for AI & autonomous systems.**
 
