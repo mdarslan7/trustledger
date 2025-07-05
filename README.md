@@ -11,7 +11,7 @@
 - **Misinformation spreads 6x faster** than verified truth
 - **AI self-validation** amplifies hallucinations instead of catching them
 
-Current solutions either rely on AI validating itself (unreliable) or humans checking everything (doesn't scale). **We have built an external verification system.**
+Current solutions either rely on AI validating itself (unreliable) or humans checking everything (doesn't scale). **I have built an external verification system.**
 
 ## 🚀 Solution: External Evidence Verification
 
